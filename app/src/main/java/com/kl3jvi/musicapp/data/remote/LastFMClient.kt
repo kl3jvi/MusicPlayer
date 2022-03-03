@@ -2,11 +2,11 @@ package com.kl3jvi.musicapp.data.remote
 
 import javax.inject.Inject
 
-class ListFMClient @Inject constructor(
-    private val listFMService: ListFMService
+class LastFMClient @Inject constructor(
+    private val lastFMService: LastFMService
 ) {
     suspend fun getTopAlbums(artistName: String, page: Int) =
-        listFMService.getTopAlbumByArtist(
+        lastFMService.getTopAlbumByArtist(
             method = METHOD,
             apiKey = API_KEY,
             artistName = artistName,

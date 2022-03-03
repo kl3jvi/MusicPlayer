@@ -11,6 +11,7 @@ import com.kl3jvi.musicapp.databinding.ItemMoreFromThisArtistBinding
 import com.kl3jvi.musicapp.databinding.ItemMoreFromThisArtistBindingImpl
 import com.kl3jvi.musicapp.databinding.ItemMusicBinding
 import com.kl3jvi.musicapp.domain.model.Album
+import com.kl3jvi.musicapp.presentation.details.DetailsFragmentDirections
 import com.kl3jvi.musicapp.presentation.search.SearchFragmentDirections
 
 class MoreAdapter : PagingDataAdapter<Album, MoreAdapter.MusicViewHolder>(MoreDiffUtil()) {
@@ -43,7 +44,7 @@ class MoreAdapter : PagingDataAdapter<Album, MoreAdapter.MusicViewHolder>(MoreDi
         }
 
         private fun navigateToDetails(album: Album, view: View) {
-            val direction = SearchFragmentDirections.actionSearchFragmentToDetailsFragment(album)
+            val direction = DetailsFragmentDirections.actionNavigationDetailsSelf(album)
             view.findNavController().navigate(direction)
         }
 

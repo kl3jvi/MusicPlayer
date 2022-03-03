@@ -4,11 +4,9 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.kl3jvi.musicapp.data.remote.dto.toAlbum
 import com.kl3jvi.musicapp.domain.model.Album
-import com.kl3jvi.musicapp.domain.use_case.IsAlbumOnDBUseCase
-import kotlinx.coroutines.coroutineScope
 
 class MusicPagingSource(
-    private val apiService: ListFMClient,
+    private val apiService: LastFMClient,
     private val artistName: String,
 ) : PagingSource<Int, Album>() {
     override fun getRefreshKey(state: PagingState<Int, Album>): Int? {

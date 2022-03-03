@@ -36,5 +36,8 @@
         <argument
             android:name="albumDetails"
             app:argType="com.kl3jvi.musicapp.domain.model.Album" />
+        <action
+            android:id="@+id/action_navigation_details_self"
+            app:destination="@id/navigation_details" />
     </fragment>
 </navigation>

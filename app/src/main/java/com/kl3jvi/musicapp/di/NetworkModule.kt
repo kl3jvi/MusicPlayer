@@ -2,8 +2,8 @@ package com.kl3jvi.musicapp.di
 
 import com.kl3jvi.musicapp.common.Constants.BASE_URL
 import com.kl3jvi.musicapp.data.remote.HttpRequestInterceptor
-import com.kl3jvi.musicapp.data.remote.ListFMClient
-import com.kl3jvi.musicapp.data.remote.ListFMService
+import com.kl3jvi.musicapp.data.remote.LastFMClient
+import com.kl3jvi.musicapp.data.remote.LastFMService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -37,13 +37,13 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideListFMService(retrofit: Retrofit): ListFMService {
-        return retrofit.create(ListFMService::class.java)
+    fun provideListFMService(retrofit: Retrofit): LastFMService {
+        return retrofit.create(LastFMService::class.java)
     }
 
     @Provides
     @Singleton
-    fun provideListFMClient(listFMService: ListFMService): ListFMClient {
-        return ListFMClient(listFMService)
+    fun provideListFMClient(lastFMService: LastFMService): LastFMClient {
+        return LastFMClient(lastFMService)
     }
 }

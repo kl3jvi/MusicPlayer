@@ -2,16 +2,16 @@ package com.kl3jvi.musicapp.presentation.details
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import com.kl3jvi.musicapp.domain.model.Album
 import com.kl3jvi.musicapp.domain.use_case.DeleteAlbumFromDatabaseUseCase
+import com.kl3jvi.musicapp.domain.use_case.GetTopAlbumsUseCase
 import com.kl3jvi.musicapp.domain.use_case.IsAlbumOnDBUseCase
 import com.kl3jvi.musicapp.domain.use_case.MarkAlbumAsFavoriteUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.plus
 import javax.inject.Inject
@@ -20,9 +20,19 @@ import javax.inject.Inject
 class DetailsViewModel @Inject constructor(
     private val markAlbumAsFavoriteUseCase: MarkAlbumAsFavoriteUseCase,
     private val deleteAlbumFromDatabaseUseCase: DeleteAlbumFromDatabaseUseCase,
-    private val isAlbumOnDBUseCase: IsAlbumOnDBUseCase
+    private val getTopAlbumsUseCase: GetTopAlbumsUseCase
 ) : ViewModel() {
 
+    private var currentQueryValue: String? = null
+    private var currentSearchResult: Flow<PagingData<Album>>? = null
+
+    fun searchPictures(queryString: String): Flow<PagingData<Album>> {
+        currentQueryValue = queryString
+        val newResult: Flow<PagingData<Album>> =
+            getTopAlbumsUseCase(queryString).cachedIn(viewModelScope)
+        currentSearchResult = newResult
+        return newResult
+    }
 
     fun markAsFavorite(album: Album) =
         viewModelScope.launch(Dispatchers.IO) { // IO Dispatcher for inserting on database

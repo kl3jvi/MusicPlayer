@@ -7,13 +7,20 @@ import android.view.MenuItem
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
+import androidx.paging.insertFooterItem
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.kl3jvi.musicapp.MainActivity
 import com.kl3jvi.musicapp.R
 import com.kl3jvi.musicapp.common.viewBinding
 import com.kl3jvi.musicapp.databinding.DetailsFragmentBinding
 import com.kl3jvi.musicapp.presentation.adapter.MoreAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
@@ -24,6 +31,7 @@ class DetailsFragment : Fragment(R.layout.details_fragment) {
     private val args: DetailsFragmentArgs by navArgs()
     private val albumDetails get() = args.albumDetails
     private val adapter = MoreAdapter()
+    private var searchJob: Job? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,12 +41,15 @@ class DetailsFragment : Fragment(R.layout.details_fragment) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews()
-
+        search(albumDetails.artist.name)
     }
+
 
     private fun initViews() {
         albumDetails.let { albumInfo ->
             binding.albumInfo = albumInfo
+            binding.similarRecyclerView.layoutManager =
+                LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
             binding.similarRecyclerView.adapter = adapter
         }
     }
@@ -80,5 +91,12 @@ class DetailsFragment : Fragment(R.layout.details_fragment) {
         return false
     }
 
-
+    private fun search(query: String) {
+        searchJob?.cancel()
+        searchJob = lifecycleScope.launch {
+            viewModel.searchPictures(query).collectLatest {
+                adapter.submitData(it)
+            }
+        }
+    }
 }
