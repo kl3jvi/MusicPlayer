@@ -11,7 +11,7 @@ import com.kl3jvi.musicapp.R
 import com.kl3jvi.musicapp.common.SearchAlbumQuery
 import com.kl3jvi.musicapp.common.viewBinding
 import com.kl3jvi.musicapp.databinding.SearchFragmentBinding
-import com.kl3jvi.musicapp.presentation.adapter.MusicAdapter
+import com.kl3jvi.musicapp.presentation.adapter.SearchAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collectLatest
@@ -23,7 +23,7 @@ class SearchFragment : Fragment(R.layout.search_fragment) {
     private val viewModel: SearchViewModel by viewModels()
     private val binding: SearchFragmentBinding by viewBinding()
     private var searchJob: Job? = null
-    private val adapter = MusicAdapter()
+    private val adapter = SearchAdapter()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

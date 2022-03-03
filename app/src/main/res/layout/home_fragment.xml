@@ -6,6 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".presentation.home.HomeFragment">
 
+    <TextView
+        android:id="@+id/no_favorite_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/no_favorites"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/homeRv"
         android:layout_width="0dp"
@@ -16,5 +28,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:spanCount="2"
-        tools:listitem="@layout/item_music" />
+        tools:listitem="@layout/item_music"
+        tools:visibility="gone" />
 </androidx.constraintlayout.widget.ConstraintLayout>

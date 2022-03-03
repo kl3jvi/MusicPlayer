@@ -4,6 +4,7 @@ import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import coil.load
 import coil.request.CachePolicy
+import com.kl3jvi.musicapp.R
 
 object ViewBindings {
     @JvmStatic
@@ -13,6 +14,8 @@ object ViewBindings {
             image.load(url) {
                 crossfade(true)
                 diskCachePolicy(CachePolicy.ENABLED)
+                placeholder(R.drawable.ic_no_image)
+                error(R.drawable.ic_no_image)
             }
         }
     }

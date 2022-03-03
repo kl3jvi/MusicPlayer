@@ -14,4 +14,7 @@ interface AlbumDao {
 
     @Delete
     suspend fun deleteAlbum(album: Album)
+
+    @Query("SELECT EXISTS(SELECT * FROM Album WHERE id = :id)")
+    fun isAlbumOnDatabase(id: Int): Flow<Boolean>
 }

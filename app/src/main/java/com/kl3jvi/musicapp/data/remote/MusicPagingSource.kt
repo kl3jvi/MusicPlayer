@@ -4,10 +4,12 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.kl3jvi.musicapp.data.remote.dto.toAlbum
 import com.kl3jvi.musicapp.domain.model.Album
+import com.kl3jvi.musicapp.domain.use_case.IsAlbumOnDBUseCase
+import kotlinx.coroutines.coroutineScope
 
 class MusicPagingSource(
     private val apiService: ListFMClient,
-    private val artistName: String
+    private val artistName: String,
 ) : PagingSource<Int, Album>() {
     override fun getRefreshKey(state: PagingState<Int, Album>): Int? {
         return state.anchorPosition?.let { anchorPosition ->
@@ -20,6 +22,7 @@ class MusicPagingSource(
         return try {
             val response = apiService.getTopAlbums(artistName, page)
                 .topAlbums.albumDto.map { it.toAlbum() }
+
 
             LoadResult.Page(
                 data = response,

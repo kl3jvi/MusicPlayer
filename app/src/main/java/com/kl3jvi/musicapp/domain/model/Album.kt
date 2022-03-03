@@ -14,7 +14,8 @@ data class Album(
     val imageDto: List<Image>,
     val name: String,
     val playCount: Int,
-    val url: String
+    val url: String,
+    val isFavorite: Boolean = false
 ) : DomainModel, Parcelable {
     fun getImageUrl(): String {
         return imageDto.last().text

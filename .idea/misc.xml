@@ -5,16 +5,22 @@
       <map>
         <entry key="app/src/main/res/drawable/ic_baseline_clear_24.xml" value="0.11" />
         <entry key="app/src/main/res/drawable/ic_explore.xml" value="0.11" />
+        <entry key="app/src/main/res/drawable/ic_favorite_complete.xml" value="0.11" />
+        <entry key="app/src/main/res/drawable/ic_favorite_uncompleted.xml" value="0.11" />
         <entry key="app/src/main/res/drawable/ic_home.xml" value="0.11" />
+        <entry key="app/src/main/res/drawable/outline_broken_image_24.xml" value="0.184" />
         <entry key="app/src/main/res/drawable/search_bg.xml" value="0.11" />
         <entry key="app/src/main/res/drawable/search_icon.xml" value="0.11" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.24270833333333333" />
         <entry key="app/src/main/res/layout/details_fragment.xml" value="0.19947916666666668" />
         <entry key="app/src/main/res/layout/home_fragment.xml" value="0.16296296296296298" />
         <entry key="app/src/main/res/layout/item_artist.xml" value="0.24270833333333333" />
+        <entry key="app/src/main/res/layout/item_favorites.xml" value="0.140625" />
+        <entry key="app/src/main/res/layout/item_more_from_this_artist.xml" value="0.19947916666666668" />
         <entry key="app/src/main/res/layout/item_music.xml" value="0.11041666666666666" />
         <entry key="app/src/main/res/layout/search_fragment.xml" value="0.24270833333333333" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.24270833333333333" />
+        <entry key="app/src/main/res/menu/favorite_menu.xml" value="0.37604166666666666" />
       </map>
     </option>
   </component>

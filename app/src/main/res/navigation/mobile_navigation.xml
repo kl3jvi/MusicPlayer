@@ -10,10 +10,14 @@
         android:name="com.kl3jvi.musicapp.presentation.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/home_fragment">
+        <argument
+            android:name="albumDetails"
+            app:argType="com.kl3jvi.musicapp.domain.model.Album" />
         <action
             android:id="@+id/action_homeFragment_to_detailsFragment"
             app:destination="@id/navigation_details" />
     </fragment>
+
     <fragment
         android:id="@+id/navigation_explore"
         android:name="com.kl3jvi.musicapp.presentation.search.SearchFragment"

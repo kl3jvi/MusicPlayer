@@ -15,7 +15,7 @@ import com.kl3jvi.musicapp.presentation.search.SearchFragmentDirections
  * Adapter for the [RecyclerView] in [SearchFragment].
  */
 
-class MusicAdapter : PagingDataAdapter<Album, MusicAdapter.MusicViewHolder>(MusicDiffCallback()) {
+class SearchAdapter : PagingDataAdapter<Album, SearchAdapter.MusicViewHolder>(MusicDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MusicViewHolder {
         val binding: ItemMusicBinding = ItemMusicBinding.inflate(
             LayoutInflater.from(parent.context),
