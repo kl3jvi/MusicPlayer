@@ -9,6 +9,7 @@
         <entry key="app/src/main/res/drawable/search_bg.xml" value="0.11" />
         <entry key="app/src/main/res/drawable/search_icon.xml" value="0.11" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.24270833333333333" />
+        <entry key="app/src/main/res/layout/details_fragment.xml" value="0.19947916666666668" />
         <entry key="app/src/main/res/layout/home_fragment.xml" value="0.16296296296296298" />
         <entry key="app/src/main/res/layout/item_artist.xml" value="0.24270833333333333" />
         <entry key="app/src/main/res/layout/item_music.xml" value="0.11041666666666666" />

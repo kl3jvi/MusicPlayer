@@ -1,16 +1,18 @@
 package com.kl3jvi.musicapp.domain.model
 
-import com.kl3jvi.musicapp.data.remote.dto.ArtistDto
-import com.kl3jvi.musicapp.data.remote.dto.Image
+import android.os.Parcelable
+import com.kl3jvi.musicapp.data.remote.dto.ImageDto
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class Album(
-    val artistDto: ArtistDto,
-    val image: List<Image>,
+    val artistDto: Artist,
+    val imageDto: List<Image>,
     val name: String,
-    val playcount: Int,
+    val playCount: Int,
     val url: String
-) {
+) : DomainModel, Parcelable {
     fun getImageUrl(): String {
-        return image.last().text
+        return imageDto.last().text
     }
 }

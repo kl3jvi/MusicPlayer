@@ -2,12 +2,13 @@ package com.kl3jvi.musicapp.presentation.search
 
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
+import com.kl3jvi.musicapp.MainActivity
 import com.kl3jvi.musicapp.R
+import com.kl3jvi.musicapp.common.SearchAlbumQuery
 import com.kl3jvi.musicapp.common.viewBinding
 import com.kl3jvi.musicapp.databinding.SearchFragmentBinding
 import com.kl3jvi.musicapp.presentation.adapter.MusicAdapter
@@ -33,18 +34,13 @@ class SearchFragment : Fragment(R.layout.search_fragment) {
         binding.recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
         binding.recyclerView.adapter = adapter
 
-        binding.mainSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextChange(newText: String): Boolean {
-                return false
-            }
-
-            override fun onQueryTextSubmit(query: String): Boolean {
-                search(query)
+        binding.mainSearch.setOnQueryTextListener(object : SearchAlbumQuery {
+            override fun onQueryTextChange(query: String): Boolean {
+                search(query = query)
                 return false
             }
         })
     }
-
 
     private fun search(query: String) {
         // Make sure we cancel the previous job before creating a new one
@@ -56,5 +52,10 @@ class SearchFragment : Fragment(R.layout.search_fragment) {
         }
     }
 
-
+    override fun onResume() {
+        super.onResume()
+        if (requireActivity() is MainActivity) {
+            (activity as MainActivity?)?.showBottomNavBar()
+        }
+    }
 }

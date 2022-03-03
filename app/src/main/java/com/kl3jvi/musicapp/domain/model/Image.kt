@@ -4,9 +4,7 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-
-data class Artist(
-    val mbid: String,
-    val name: String,
-    val url: String
-) : DomainModel, Parcelable
+data class Image(
+    val size: String,
+    val text: String
+) : Parcelable

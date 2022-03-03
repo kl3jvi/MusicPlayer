@@ -23,9 +23,14 @@
             android:id="@+id/action_searchFragment_to_detailsFragment"
             app:destination="@id/navigation_details" />
     </fragment>
+
     <fragment
         android:id="@+id/navigation_details"
         android:name="com.kl3jvi.musicapp.presentation.details.DetailsFragment"
         android:label="@string/title_details"
-        tools:layout="@layout/details_fragment" />
+        tools:layout="@layout/details_fragment">
+        <argument
+            android:name="albumDetails"
+            app:argType="com.kl3jvi.musicapp.domain.model.Album" />
+    </fragment>
 </navigation>

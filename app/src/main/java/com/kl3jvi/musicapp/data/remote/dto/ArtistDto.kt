@@ -22,4 +22,3 @@ fun ArtistDto.toArtist(): Artist {
         url = url
     )
 }
-

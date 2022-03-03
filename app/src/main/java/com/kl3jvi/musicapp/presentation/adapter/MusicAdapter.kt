@@ -9,10 +9,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.kl3jvi.musicapp.databinding.ItemMusicBinding
 import com.kl3jvi.musicapp.domain.model.Album
-import com.kl3jvi.musicapp.presentation.home.HomeFragmentDirections
+import com.kl3jvi.musicapp.presentation.search.SearchFragmentDirections
 
 /**
- * Adapter for the [RecyclerView] in [HomeFragment].
+ * Adapter for the [RecyclerView] in [SearchFragment].
  */
 
 class MusicAdapter : PagingDataAdapter<Album, MusicAdapter.MusicViewHolder>(MusicDiffCallback()) {
@@ -46,8 +46,10 @@ class MusicAdapter : PagingDataAdapter<Album, MusicAdapter.MusicViewHolder>(Musi
 
         private fun navigateToDetails(album: Album, view: View) {
             val direction =
-                HomeFragmentDirections.actionHomeFragmentToDetailsFragment()
-//            view.findNavController().navigate(direction)
+                SearchFragmentDirections.actionSearchFragmentToDetailsFragment(
+                    album
+                )
+            view.findNavController().navigate(direction)
         }
 
         fun bindItem(album: Album) {
@@ -57,12 +59,11 @@ class MusicAdapter : PagingDataAdapter<Album, MusicAdapter.MusicViewHolder>(Musi
             }
         }
     }
-
 }
 
 private class MusicDiffCallback : DiffUtil.ItemCallback<Album>() {
     override fun areItemsTheSame(oldItem: Album, newItem: Album): Boolean {
-        return oldItem.playcount == newItem.playcount
+        return oldItem.playCount == newItem.playCount
     }
 
     override fun areContentsTheSame(oldItem: Album, newItem: Album): Boolean {

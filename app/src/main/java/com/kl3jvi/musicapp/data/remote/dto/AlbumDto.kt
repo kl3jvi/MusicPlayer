@@ -10,7 +10,7 @@ data class AlbumDto(
     @Json(name = "artist")
     val artistDto: ArtistDto,
     @Json(name = "image")
-    val image: List<Image>,
+    val imageDto: List<ImageDto>,
     @Json(name = "name")
     val name: String,
     @Json(name = "playcount")
@@ -21,10 +21,10 @@ data class AlbumDto(
 
 fun AlbumDto.toAlbum(): Album {
     return Album(
-        artistDto = artistDto,
-        image = image,
+        artistDto = artistDto.toArtist(),
+        imageDto = imageDto.map { it.toImage() },
         name = name,
-        playcount = playCount,
+        playCount = playCount,
         url = url
     )
 }

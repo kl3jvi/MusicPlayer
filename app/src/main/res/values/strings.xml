@@ -2,6 +2,6 @@
     <string name="app_name">Music App</string>
     <string name="title_home">Home</string>
     <string name="title_explore">Explore</string>
-    <string name="title_details">Albume Details</string>
+    <string name="title_details">Album Details</string>
     <string name="search_hint">Search Albums</string>
 </resources>
