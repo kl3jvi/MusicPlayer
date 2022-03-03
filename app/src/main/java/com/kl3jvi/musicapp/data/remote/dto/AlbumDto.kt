@@ -21,7 +21,7 @@ data class AlbumDto(
 
 fun AlbumDto.toAlbum(): Album {
     return Album(
-        artistDto = artistDto.toArtist(),
+        artist = artistDto.toArtist(),
         imageDto = imageDto.map { it.toImage() },
         name = name,
         playCount = playCount,
