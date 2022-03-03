@@ -50,7 +50,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/header"
-                tools:text="skydoves" />
+                tools:text="lana del rey" />
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/header"
