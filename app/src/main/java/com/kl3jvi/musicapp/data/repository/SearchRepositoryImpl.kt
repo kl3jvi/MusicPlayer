@@ -6,13 +6,13 @@ import androidx.paging.PagingData
 import com.kl3jvi.musicapp.data.remote.ListFMClient
 import com.kl3jvi.musicapp.data.remote.MusicPagingSource
 import com.kl3jvi.musicapp.domain.model.Album
-import com.kl3jvi.musicapp.domain.repository.MusicRepository
+import com.kl3jvi.musicapp.domain.repository.SearchRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class MusicRepositoryImpl @Inject constructor(
+class SearchRepositoryImpl @Inject constructor(
     private val api: ListFMClient
-) : MusicRepository {
+) : SearchRepository {
     override fun getTopAlbums(artistName: String): Flow<PagingData<Album>> {
         return Pager(
             config = PagingConfig(enablePlaceholders = false, pageSize = NETWORK_PAGE_SIZE),

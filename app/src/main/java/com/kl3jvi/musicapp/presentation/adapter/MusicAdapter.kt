@@ -16,7 +16,6 @@ import com.kl3jvi.musicapp.presentation.search.SearchFragmentDirections
  */
 
 class MusicAdapter : PagingDataAdapter<Album, MusicAdapter.MusicViewHolder>(MusicDiffCallback()) {
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MusicViewHolder {
         val binding: ItemMusicBinding = ItemMusicBinding.inflate(
             LayoutInflater.from(parent.context),
@@ -45,10 +44,7 @@ class MusicAdapter : PagingDataAdapter<Album, MusicAdapter.MusicViewHolder>(Musi
         }
 
         private fun navigateToDetails(album: Album, view: View) {
-            val direction =
-                SearchFragmentDirections.actionSearchFragmentToDetailsFragment(
-                    album
-                )
+            val direction = SearchFragmentDirections.actionSearchFragmentToDetailsFragment(album)
             view.findNavController().navigate(direction)
         }
 
